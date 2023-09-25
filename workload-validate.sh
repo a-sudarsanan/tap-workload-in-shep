@@ -79,9 +79,9 @@ add_secrets() {
 # Define a function to apply prerequisites (will move to a GitHub repo)
 apply_prerequisites() {
     echo "Applying prerequisites..."
-    kubectl apply -f https://raw.githubusercontent.com/a-sudarsanan/tap-workload-in-shep/main/ScanPolicy.yml -n my-apps
-    kubectl apply -f https://raw.githubusercontent.com/a-sudarsanan/tap-workload-in-shep/main/Pipeline.yml -n my-apps
-    kubectl apply -f https://raw.githubusercontent.com/a-sudarsanan/tap-workload-in-shep/main/dev-namespace.yml -n my-apps
+    kubectl apply -f https://raw.githubusercontent.com/a-sudarsanan/tap-workload-in-shep/main/resources/ScanPolicy.yml -n my-apps
+    kubectl apply -f https://raw.githubusercontent.com/a-sudarsanan/tap-workload-in-shep/main/resources/Pipeline.yml -n my-apps
+    kubectl apply -f https://raw.githubusercontent.com/a-sudarsanan/tap-workload-in-shep/main/resources/dev-namespace.yml -n my-apps
 
     if [[ $apply_workaround = true ]]; then
         echo "Applying workaround..."
