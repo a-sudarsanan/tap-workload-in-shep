@@ -1,5 +1,6 @@
 #!/usr/local/bin/bash
 set -e
+set -o pipefail
 # Check if both test_bed_id and namespace are provided as command-line arguments
 if [ "$#" -ne 2 ]; then
     echo "Usage: $0 <TAP test_bed_id> <namespace>"
@@ -128,23 +129,23 @@ validate_workload() {
 
 #invoke precheck
 precheck
-
+echo 
 # Get Shepherd config
 get_shepherd_config $test_bed_id $namespace
-
+echo
 # Export variables
 export_variables $test_bed_id $namespace
-
+echo
 # Prepare Tanzu CLI
 prepare_tanzu_cli
-
+echo
 # Add secrets
 add_secrets $registry_server $registry_username $registry_password
-
+echo
 # Apply prerequisites
 apply_prerequisites
-
+echo
 # Create workload
 create_workload
-
+echo
 validate_workload
